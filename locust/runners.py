@@ -144,7 +144,7 @@ class LocustRunner(object):
         logger.info("Total of %i clients before" % self.num_clients)            
         for g in dying:
             try:
-                self.locusts.killone(g)
+                self.locusts.killone(g, timeout=5)
                 logger.info("Locust killed")
             except:
                 logger.info("Error on locust kill")
