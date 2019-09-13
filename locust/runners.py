@@ -139,6 +139,8 @@ class LocustRunner(object):
                     dying.append(g)
                     bucket.remove(l)
                     break
+        total_dying = len(dying)                
+        logger.info("Dying %i locusts" % total_dying)            
         for g in dying:
             self.locusts.killone(g)
         events.hatch_complete.fire(user_count=self.num_clients)
