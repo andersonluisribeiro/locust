@@ -144,6 +144,7 @@ class LocustRunner(object):
         logger.info("Total of %i clients before" % self.num_clients)            
         for g in dying:
             self.locusts.killone(g)
+            logger.info("Locust killed")
         logger.info("Total of %i clients after" % self.num_clients)     
         events.hatch_complete.fire(user_count=self.num_clients)
 
