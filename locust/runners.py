@@ -140,9 +140,11 @@ class LocustRunner(object):
                     bucket.remove(l)
                     break
         total_dying = len(dying)                
-        logger.info("Dying %i locusts" % total_dying)            
+        logger.info("Dying %i locusts" % total_dying)
+        logger.info("Total of %i clients before" % self.num_clients)            
         for g in dying:
             self.locusts.killone(g)
+        logger.info("Total of %i clients after" % self.num_clients)     
         events.hatch_complete.fire(user_count=self.num_clients)
 
     def start_hatching(self, locust_count=None, hatch_rate=None, wait=False):
